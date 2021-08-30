@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS users(
     is_active boolean default TRUE,
     created_at datetime default current_timestamp,
     updated_at datetime default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
-    created_by varchar(128) NOT NULL,
+    created_by varchar(128) DEFAULT NULL,
     PRIMARY KEY(id)
 );
 
@@ -13,12 +13,12 @@ CREATE TABLE IF NOT EXISTS user_details(
     user_id bigint unsigned AUTO_INCREMENT NOT NULL,
     name varchar(128) NOT NULL,
     father_name varchar(128) DEFAULT NULL,
-    address varchar(255) NOT NULL,
-    pincode varchar(255) NOT NULL,
-    city varchar(128) NOT NULL,
-    state varchar(128) NOT NULL,
-    phone varchar(128) NOT NULL,
-    email varchar(255) NOT NULL,
+    address varchar(255) DEFAULT NULL,
+    pincode varchar(6) DEFAULT NULL,
+    city varchar(128) DEFAULT NULL,
+    state varchar(128) DEFAULT NULL,
+    phone varchar(10) NOT NULL,
+    email varchar(128) NOT NULL,
     notes varchar(255) DEFAULT NULL,
     created_at datetime default current_timestamp,
     updated_at datetime default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
@@ -37,18 +37,18 @@ CREATE TABLE IF NOT EXISTS user_role(
 
 CREATE TABLE IF NOT EXISTS students(
     roll_no varchar(30) NOT NULL,
-    reg_no varchar(30) DEFAULT NULL,
+    reg_no varchar(30) DEFAULT NULLuser,
     batch varchar(20) NOT NULL,
     father_name varchar(128) NOT NULL,
     mother_name varchar(128) NOT NULL,
     address varchar(255) NOT NULL,
-    pincode varchar(20) NOT NULL,
+    pincode varchar(6) NOT NULL,
     city varchar(30) NOT NULL,
     state varchar(30) NOT NULL,
     blood_group varchar(10) DEFAULT NULL,
-    phone_1 varchar(30) NOT NULL,
-    phone_2 varchar(30) default NULL,
-    fathers_phone varchar(30) NOT NULL,
+    phone_1 varchar(10) NOT NULL,
+    phone_2 varchar(10) default NULL,
+    fathers_phone varchar(10) NOT NULL,
     created_at datetime default current_timestamp,
     updated_at datetime default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (roll_no)
@@ -65,19 +65,7 @@ CREATE TABLE IF NOT EXISTS hostels(
     PRIMARY KEY (id)
 );
 
-
-CREATE TABLE IF NOT EXISTS supritendents(
-    hostel_id bigint unsigned NOT NULL,
-    user_id bigint unsigned NOT NULL,
-    is_active boolean default TRUE,
-    created_at datetime default current_timestamp,
-    updated_at datetime default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
-    CONSTRAINT `PK_SUP` PRIMARY KEY (hostel_id,user_id),
-    CONSTRAINT `FK_SUP_HOSTEL_ID` FOREIGN KEY (hostel_id) REFERENCES hostels(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `FK_SUP_USER_ID` FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS caretakers(
+CREATE TABLE IF NOT EXISTS staffs(
     hostel_id bigint unsigned NOT NULL,
     user_id bigint unsigned NOT NULL,
     is_active boolean default TRUE,

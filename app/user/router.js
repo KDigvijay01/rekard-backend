@@ -10,4 +10,11 @@ router.get('/test', async (req, res) => {
 });
 
 
+router.post('/login', async (req, res) => {
+    const params = req.body;
+    const loginResp = await userController.staffLogin(params);
+    res.send(loginResp);
+})
+
+
 module.exports = router;
