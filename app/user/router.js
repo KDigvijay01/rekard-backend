@@ -3,6 +3,7 @@ const userController = require('./index');
 
 
 
+
 router.get('/test', async (req, res) => {
     const testResp  = await  userController.test();
     res.send(testResp);
@@ -12,7 +13,8 @@ router.get('/test', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const params = req.body;
-    const loginResp = await userController.staffLogin(params);
+    const loginResp = await userController.login(params);
+    console.log(loginResp);
     res.send(loginResp);
 })
 
