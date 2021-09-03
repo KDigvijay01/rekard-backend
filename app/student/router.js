@@ -18,4 +18,11 @@ router.post('/entry', async (req, res) => {
 })
 
 
+router.get('/info', async (req, res) => {
+    const params=req.query;
+    const studentInfoResp=await studentsController.studentInfo(params);
+    res.send(studentInfoResp);
+});
+
+
 module.exports = router;

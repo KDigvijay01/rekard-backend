@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors')
 const db = require('./config/mysql')
 const logger = require('./utils/logger')
+const studentRoutes= require('./student/router')
 const usersRoutes = require('./user/router')
 const hostelRoutes=require('./hostel/router')
 
@@ -24,6 +25,8 @@ app.get('/ping', function (req, res) {
 // Routes
 app.use('/users', usersRoutes);
 app.use('/hostel', hostelRoutes);
+app.use('/student',studentRoutes);
+
 
 
 

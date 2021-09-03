@@ -109,3 +109,14 @@ CREATE TABLE IF NOT EXISTS user_sessions (
 );
 
 select u.id, u.username, ud.name, ur.role, ud.father_name, ud.address,ud.pincode, ud.city, ud.state, ud.phone, ud.email, ud.notes, h.id as hoatel_id,h.name as hostel_name, h.address as hostel_address from users u left join user_details ud on u.id=ud.user_id left join staffs s on u.id=s.user_id left join user_role ur on u.id=ur.user_id left join hostels h on s.hostel_id = h.id WHERE u.username="sonu_caretaker" and u.is_active=1;
+
+
+
+
+ALTER TABLE students ADD name varchar(50) NOT NULL;
+UPDATE students SET name ="Manish Kumar" WHERE roll_no="17CS11";
+UPDATE students SET name ="Digvijay Kumar" WHERE roll_no="17CS11";
+UPDATE students SET name ="Amit Kumar" WHERE roll_no="17CS37";
+
+
+select s.roll_no,s.name, s.reg_no, s.batch, a.hostel_id, h.name as hostel_name, a.room_no, a.due_date from allotments a left join students s on a.roll_no=s.roll_no left join hostels h on a.hostel_id = h.id WHERE a.roll_no="17CS11" and a.is_active=1;
