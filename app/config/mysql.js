@@ -14,7 +14,7 @@
      database: 'rekard_db',
      debug: false,
      user: 'root',
-     password: 'password',
+     password: 'Mysql@123',
      ssl: false
    }
  }

@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS user_role(
 
 CREATE TABLE IF NOT EXISTS students(
     roll_no varchar(30) NOT NULL,
-    reg_no varchar(30) DEFAULT NULLuser,
+    reg_no varchar(30) DEFAULT NULL,
     batch varchar(20) NOT NULL,
     father_name varchar(128) NOT NULL,
     mother_name varchar(128) NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS entry_registers(
     CONSTRAINT `FK_ENTRY_HOSTEL_ID` FOREIGN KEY (hostel_id) REFERENCES hostels(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS IF NOT EXISTS user_sessions (
+CREATE TABLE IF NOT EXISTS user_sessions (
     user_id bigint unsigned NOT NULL,
     login_time timestamp default CURRENT_TIMESTAMP,
     logout_time timestamp default null

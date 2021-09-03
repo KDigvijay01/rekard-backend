@@ -3,6 +3,7 @@ const cors = require('cors')
 const db = require('./config/mysql')
 const logger = require('./utils/logger')
 const usersRoutes = require('./user/router')
+const hostelRoutes=require('./hostel/router')
 
 global.__base = __dirname + '/'
 const PORT = process.env.npm_package_config_port || 4000
@@ -22,6 +23,8 @@ app.get('/ping', function (req, res) {
 
 // Routes
 app.use('/users', usersRoutes);
+app.use('/hostel', hostelRoutes);
+
 
 
 
